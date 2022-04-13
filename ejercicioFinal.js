@@ -37,7 +37,6 @@ function cargarProductos(categoClic) {
     return p.idCategoria == categoClic.id;
   });
   filteredArray.map((prod) => {
-    //let categoriaProducto = categoria.[]
     let divEtq = document.createElement("div");
     let etqH4 = document.createElement("h4");
     let etqH5 = document.createElement("h5");
@@ -45,17 +44,21 @@ function cargarProductos(categoClic) {
     let etqLiPrecio = document.createElement("li");
     let etqLiDescuento = document.createElement("li");
     let etqButton = document.createElement("button");
+    let etqP = document.createElement("p");
     etqH4.innerHTML = `Producto de ${categoClic.nombre}`;
     etqLiDescuento.innerHTML = prod.descuento
       ? prod.descuento
       : "Sin descuento";
     etqH5.innerHTML = prod.nombre;
     etqLiPrecio.innerHTML = prod.precio;
+    etqButton.innerHTML = "Comprar";
     etqUL.appendChild(etqLiPrecio);
     etqUL.appendChild(etqLiDescuento);
     divEtq.appendChild(etqH4);
     divEtq.appendChild(etqH5);
     divEtq.appendChild(etqUL);
+    let btnCondition = prod.inventario ? etqButton : etqP;
+    divEtq.appendChild(btnCondition);
     document.body.append(divEtq);
   });
 }
