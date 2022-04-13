@@ -36,8 +36,15 @@ function cargarProductos(categoClic) {
   const filteredArray = productos.filter((p) => {
     return p.idCategoria == categoClic.id;
   });
+
   filteredArray.map((prod) => {
-    let divEtq = document.createElement("div");
+    let divEtq = document.getElementById("contenedorProductos");
+    if (divEtq) {
+      divEtq.innerHTML = ``;
+    } else {
+      divEtq = document.createElement("div");
+      divEtq.setAttribute("id", "contenedorProductos");
+    }
     let etqH4 = document.createElement("h4");
     let etqH5 = document.createElement("h5");
     let etqUL = document.createElement("ul");
