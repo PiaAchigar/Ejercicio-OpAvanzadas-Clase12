@@ -15,7 +15,7 @@ function cargarCategorias() {
     btn.setAttribute("id", categ.id);
     btn.setAttribute("class", "btnStyle");
     btn.innerHTML = categ.nombre;
-    btn.addEventListener("click", cargarProductos);
+    btn.addEventListener("click", (e) => cargarProductos(categ));
     btnCategorias.appendChild(btn);
   });
 }
@@ -34,7 +34,7 @@ function cargarCategorias() {
 */
 function cargarProductos(categoClic) {
   const filteredArray = productos.filter((p) => {
-    return p.idCategoria == categoClic.target.id;
+    return p.idCategoria == categoClic.id;
   });
   filteredArray.map((prod) => {
     //let categoriaProducto = categoria.[]
@@ -45,7 +45,7 @@ function cargarProductos(categoClic) {
     let etqLiPrecio = document.createElement("li");
     let etqLiDescuento = document.createElement("li");
     let etqButton = document.createElement("button");
-    //etqh4.innerHTML = `Producto de ${categoria}`;
+    etqH4.innerHTML = `Producto de ${categoClic.nombre}`;
     etqLiDescuento.innerHTML = prod.descuento
       ? prod.descuento
       : "Sin descuento";
@@ -53,7 +53,7 @@ function cargarProductos(categoClic) {
     etqLiPrecio.innerHTML = prod.precio;
     etqUL.appendChild(etqLiPrecio);
     etqUL.appendChild(etqLiDescuento);
-    //divEtq.appendChild(etqH4);
+    divEtq.appendChild(etqH4);
     divEtq.appendChild(etqH5);
     divEtq.appendChild(etqUL);
     document.body.append(divEtq);
