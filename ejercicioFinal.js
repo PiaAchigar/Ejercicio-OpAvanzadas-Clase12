@@ -26,15 +26,21 @@ function cargarCategorias() {
     Use un Elemento <h4>Productos de {categoria}</h4> como título del contenedor
     Para validar la integridad de la información, use operadores avanzados, en donde aplique
     Cada Producto debe mostrar:    
-        Nombre (en un <h5>)
-        Precio 
-        Si el producto tiene descuento, debe mostrar el descuento
-        Si el producto no tiene descuento, debe mostrar el texto 'Sin descuento'
-    Si el producto tiene inventario, debe mostrar el botón 'Comprar' (NO DEBE PROGRAMAR LA FUNCIONALIDAD DE ESTE BOTÓN)
+        <h5> Nombre (en un <h5>)
+        <li>Precio 
+        <li> Si el producto tiene descuento, debe mostrar el descuento 
+        <li> Si el producto no tiene descuento, debe mostrar el texto 'Sin descuento'
+        <butoon> Si el producto tiene inventario, debe mostrar el botón 'Comprar' (NO DEBE PROGRAMAR LA FUNCIONALIDAD DE ESTE BOTÓN)
 */
 function cargarProductos(categoClic) {
   const filteredArray = productos.filter((p) => {
     return p.idCategoria == categoClic.target.id;
   });
-  console.log(filteredArray);
+  filteredArray.map((prod) => {
+    let etqUL = document.createElement("ul");
+    let etqLi = document.createElement("li");
+    etqLi.innerHTML = prod.precio;
+    etqUL.appendChild(etqLi);
+    document.body.append(etqUL);
+  });
 }
