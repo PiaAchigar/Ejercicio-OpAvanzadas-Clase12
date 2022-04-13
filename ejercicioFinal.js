@@ -37,10 +37,25 @@ function cargarProductos(categoClic) {
     return p.idCategoria == categoClic.target.id;
   });
   filteredArray.map((prod) => {
+    //let categoriaProducto = categoria.[]
+    let divEtq = document.createElement("div");
+    let etqH4 = document.createElement("h4");
+    let etqH5 = document.createElement("h5");
     let etqUL = document.createElement("ul");
-    let etqLi = document.createElement("li");
-    etqLi.innerHTML = prod.precio;
-    etqUL.appendChild(etqLi);
-    document.body.append(etqUL);
+    let etqLiPrecio = document.createElement("li");
+    let etqLiDescuento = document.createElement("li");
+    let etqButton = document.createElement("button");
+    //etqh4.innerHTML = `Producto de ${categoria}`;
+    etqLiDescuento.innerHTML = prod.descuento
+      ? prod.descuento
+      : "Sin descuento";
+    etqH5.innerHTML = prod.nombre;
+    etqLiPrecio.innerHTML = prod.precio;
+    etqUL.appendChild(etqLiPrecio);
+    etqUL.appendChild(etqLiDescuento);
+    //divEtq.appendChild(etqH4);
+    divEtq.appendChild(etqH5);
+    divEtq.appendChild(etqUL);
+    document.body.append(divEtq);
   });
 }
